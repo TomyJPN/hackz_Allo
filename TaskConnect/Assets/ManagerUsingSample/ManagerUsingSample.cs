@@ -10,8 +10,6 @@ public class ManagerUsingSample : MonoBehaviour {
 
   void Start() {
     //このスクリプト内で新規に作るタスクの宣言
-    Manager.Task myTask1 = new Manager.Task();
-    Manager.Task myTask2 = new Manager.Task();
 
     int type = 1; //quest
     string name = "課題";
