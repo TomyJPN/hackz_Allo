@@ -24,29 +24,39 @@ public class InputController : MonoBehaviour
     public GameObject MissionUI;
 
     public void OnClick()
-    {
-        if (QuestToggle.isOn||MissionToggle.isOn)
-        {
-            if (HardToggle.isOn||NormalToggle.isOn||EasyToggle.isOn)
-            {
-                if (TitleName.text!="")
-                {
-                    if (Description.text!="")
-                    {
-                        if (Year.text!="")
-                        {
-                            if (Month.text!="")
-                            {
-                                if (Day.text!="")
-                                {
-                                    CreateTask();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    {if (HardToggle.isOn||NormalToggle.isOn||EasyToggle.isOn)
+                 {
+                     if (TitleName.text!="")
+                     {
+                         if (Description.text!="")
+                         {
+                             if (QuestToggle.isOn||MissionToggle.isOn)
+                             {
+                                 if (QuestToggle.isOn)
+                                 {
+                                     if (Year.text!="")
+                                     {
+                                         if (Month.text!="")
+                                         {
+                                             if (Day.text!="")
+                                             {
+                                                 CreateTask();
+                                             }
+                                         }
+                                     }
+                                 }
+                                 else
+                                 {
+                                     if (MaxContinuation.text=="")
+                                     {
+                                         CreateTask();
+                                     }
+                                 }            
+                             }
+                         }
+                     }
+                 }
+        
     }
 
     public void ToggleChange()
@@ -91,10 +101,16 @@ public class InputController : MonoBehaviour
         {
             type = 1;
             data = new DateTime(int.Parse(Year.text),int.Parse(Month.text),int.Parse(Day.text));
+            Manager.Instance.SetQuestTask(TitleName.text,Description.text,Difficulty,data);  //登録
+
         }
         else
         {
             type = 2;
+            Manager.Instance.SetMissionTask(TitleName.text,Description.text,Difficulty,int.Parse(MaxContinuation.text));
         }
+
     }
+    
 }
+
