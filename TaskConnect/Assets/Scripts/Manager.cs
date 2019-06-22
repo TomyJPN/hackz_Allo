@@ -29,7 +29,7 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     public string Description { get; set; }
 
     /// <summary>
-    /// 難易度（1,2,3）
+    /// 難易度（1,2,3）3が難しい
     /// </summary>
     public int Difficulty { get; set; }
 
@@ -52,7 +52,7 @@ public class Manager : SingletonMonoBehaviour<Manager> {
   private List<Task> taskList = new List<Task>();  //総合的に入れるリスト
 
   /// <summary>
-  /// 新規のタスクをマネージャーへデータ追加します(クエストはMaxContinuationは適当な値でいい)
+  /// 廃止
   /// </summary>
   public void SetTask(int type,string name,string description,int difficulty,DateTime deadline , int maxContinuation) {
     Task newTask = new Task();
@@ -63,6 +63,42 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     newTask.Description = description;
     newTask.Difficulty = difficulty;
     newTask.Deadline = deadline;
+    newTask.MaxContinuation = maxContinuation;
+    newTask.NowContinuation = 0;
+
+    taskList.Add(newTask);
+  }
+
+  /// <summary>
+  /// 新規のクエスト用タスクをマネージャーへデータ追加します
+  /// </summary>
+  public void SetQuestTask( string name, string description, int difficulty, DateTime deadline) {
+    Task newTask = new Task();
+
+    newTask.GUID = Guid.NewGuid().ToString("N");
+    newTask.Type = 1;
+    newTask.Name = name;
+    newTask.Description = description;
+    newTask.Difficulty = difficulty;
+    newTask.Deadline = deadline;
+    newTask.MaxContinuation = 0;
+    newTask.NowContinuation = 0;
+
+    taskList.Add(newTask);
+  }
+
+  /// <summary>
+  /// 新規のデイリーミッション用タスクをマネージャーへデータ追加します
+  /// </summary>
+  public void SetMissionTask(string name, string description, int difficulty, int maxContinuation) {
+    Task newTask = new Task();
+
+    newTask.GUID = Guid.NewGuid().ToString("N");
+    newTask.Type = 2;
+    newTask.Name = name;
+    newTask.Description = description;
+    newTask.Difficulty = difficulty;
+    newTask.Deadline = new DateTime(1, 1, 1) ;
     newTask.MaxContinuation = maxContinuation;
     newTask.NowContinuation = 0;
 
