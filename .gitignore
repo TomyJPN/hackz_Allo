@@ -3,6 +3,7 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+ImportAssets
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
@@ -34,3 +35,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/TaskConnect/Assets/unity-chan!
