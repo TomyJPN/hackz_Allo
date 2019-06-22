@@ -9,8 +9,11 @@ public class QuestTaskButton : MonoBehaviour {
   Manager.Task task = new Manager.Task();
   GameObject detailView;
 
+  QuestManager qm;
+
   void Start() {
     descriptionText = GameObject.Find("Canvas/Description/Text").GetComponent<Text>();
+    qm = GameObject.Find("QuestManager").GetComponent<QuestManager>();
   }
 
   // Update is called once per frame
@@ -25,4 +28,11 @@ public class QuestTaskButton : MonoBehaviour {
   public void onDetailView() {
     descriptionText.text = task.Name + "\n" + task.Description + ", " + task.Deadline.ToShortDateString();
   }
+
+  public void onEndTask() {
+    qm.onPlayCutin(task.Name);
+    Manager.Instance.removeTask(task.GUID);
+    Destroy(gameObject);
+  }
+
 }
