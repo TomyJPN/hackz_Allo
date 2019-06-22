@@ -5,6 +5,7 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     internal object onClick;
+    internal bool interactable;
 
     // Start is called before the first frame update
     void Start()
