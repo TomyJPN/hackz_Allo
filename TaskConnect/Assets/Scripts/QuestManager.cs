@@ -11,6 +11,18 @@ public class QuestManager : MonoBehaviour {
   [SerializeField]
   GameObject content;
 
+  [SerializeField]
+  GameObject cutInView;
+
+  [SerializeField]
+  GameObject Tasks;
+
+  [SerializeField]
+  GameObject Description;
+
+  [SerializeField]
+  Text cutinText;
+
   List<Manager.Task> taskList;
 
   void Start() {
@@ -50,5 +62,19 @@ public class QuestManager : MonoBehaviour {
     deadLine = new DateTime(2000, 8, 2);
     Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
 
+  }
+
+  public void onPlayCutin(string text) {
+    Tasks.SetActive(false);
+    Description.SetActive(false);
+    cutInView.SetActive(true);
+    cutinText.text = text;
+    Invoke("offCutin", 2.1f);
+  }
+
+  void offCutin() {
+    Tasks.SetActive(true);
+    Description.SetActive(true);
+    cutInView.SetActive(false);
   }
 }
