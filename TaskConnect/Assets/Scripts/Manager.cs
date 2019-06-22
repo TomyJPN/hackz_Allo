@@ -37,14 +37,24 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     /// 締め切り日
     /// </summary>
     public DateTime Deadline { get; set; }
+
+    /// <summary>
+    /// 継続日の進捗(ミッション用)
+    /// </summary>
+    public int NowContinuation { get; set; }
+
+    /// <summary>
+    /// 目標継続日(ミッション用)
+    /// </summary>
+    public int MaxContinuation { get; set; }
   }
 
   private List<Task> taskList = new List<Task>();  //総合的に入れるリスト
 
   /// <summary>
-  /// 新規のタスクをマネージャーへデータ追加します
+  /// 新規のタスクをマネージャーへデータ追加します(クエストはMaxContinuationは適当な値でいい)
   /// </summary>
-  public void SetTask(int type,string name,string description,int difficulty,DateTime deadline) {
+  public void SetTask(int type,string name,string description,int difficulty,DateTime deadline , int maxContinuation) {
     Task newTask = new Task();
  
     newTask.GUID = Guid.NewGuid().ToString("N");
@@ -53,6 +63,8 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     newTask.Description = description;
     newTask.Difficulty = difficulty;
     newTask.Deadline = deadline;
+    newTask.MaxContinuation = maxContinuation;
+    newTask.NowContinuation = 0;
 
     taskList.Add(newTask);
   }
