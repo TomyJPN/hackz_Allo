@@ -6,19 +6,16 @@ using UnityEngine.UI;
 public class CompleteBottun : MonoBehaviour
 {
     Slider Continuation;
-    //Text DetailView;
-
-    Manager.Task task = new Manager.Task();
-
+    Text ContinuationInfo;
+    MissionButtonScript mbs;
+    //public Button btn;
     void Start()
     {
         Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
-        //DetailView = GameObject.Find("Canvas/Details/Information/Text").GetComponent<Text>();
-
-        float maxCont = 100f;
-        
-
-        Continuation.maxValue = maxCont;
+        ContinuationInfo = GameObject.Find("Canvas/Details/ContinuationInfo/Text").GetComponent<Text>();
+        mbs = transform.parent.parent.GetComponent<MissionButtonScript>();
+        Debug.Log("取得確認："+transform.parent.parent.name);
+        //float maxCont = Continuation.maxValue;        
     }
 
     // Update is called once per frame
@@ -27,15 +24,9 @@ public class CompleteBottun : MonoBehaviour
         
     }
 
-    public void Settask(Manager.Task t)
-    {
-        task = t;
-    }
 
     public void Click()
     {
-        //DetailView.text = task.Description;
-        Continuation.value = task.NowContinuation + 10;
-        Debug.Log("ボタンが押された");
+        mbs.UpdateContinuation();
     }
 }

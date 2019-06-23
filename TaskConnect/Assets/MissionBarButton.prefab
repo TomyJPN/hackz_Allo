@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540f79de3893d99408111c6277ab6621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btn: {fileID: 7888384726028778812}
 --- !u!1 &3065307516636968860
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +336,7 @@ GameObject:
   - component: {fileID: 5854642614796315888}
   - component: {fileID: 1941133415676572729}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

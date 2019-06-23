@@ -85,6 +85,7 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
   public GameData gameData = new GameData();       //保存するゲームデータ
 
+<<<<<<< HEAD
   void setSampleData() {
     int type = 1; //quest
     string name = "課題";
@@ -119,11 +120,18 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
     DontDestroyOnLoad(this.gameObject);
 
+=======
+  private void Awake() {
+>>>>>>> f7708f59036d2534a85c2be46c79d5ba8e8c9b06
     gameData.MyHP = 1;
     gameData.EnemyHP = 1;
     gameData.Attack = 1;
     gameData.Deffence = 1;
+<<<<<<< HEAD
     gameData.isWeaponGetting = new List<bool>();
+=======
+        gameData.isWeaponGetting = new List<bool>();
+>>>>>>> f7708f59036d2534a85c2be46c79d5ba8e8c9b06
     for(int i = 0; i < 5; i++) {
       bool b=false;
       gameData.isWeaponGetting.Add(b);

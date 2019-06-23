@@ -22,7 +22,7 @@ public class MissionButton : MonoBehaviour
         DateTime deadLine = new DateTime(2000, 8, 1);
         Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation);  //登録
 
-        type = 1; //quest
+        type = 2; //mission
         name = "掃除";
         description = "自分の部屋";
         difficully = 1;
@@ -30,6 +30,13 @@ public class MissionButton : MonoBehaviour
         deadLine = new DateTime(2000, 8, 2);
         Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
 
+        type = 2; //mission
+        name = "課題";
+        description = "教科書24ページ";
+        difficully = 1;
+        maxContinuation = 5;
+        deadLine = new DateTime(2000, 8, 2);
+        Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
     }
 
     void Start()
@@ -40,8 +47,9 @@ public class MissionButton : MonoBehaviour
         RectTransform content = GameObject.Find("Canvas/Scroll View/Viewport/Content").GetComponent<RectTransform>();
 
         List<Manager.Task> list = new List<Manager.Task>();
-        list = Manager.Instance.GetTaskAll();
-        
+        //list = Manager.Instance.GetTaskAll();
+        list = Manager.Instance.GetTaskListForType(2);
+
         int BUTTON_COUNT = list.Count;
 
         //Contentの高さ設定
