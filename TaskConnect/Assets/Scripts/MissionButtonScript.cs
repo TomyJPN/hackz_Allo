@@ -31,8 +31,8 @@ public class MissionButtonScript : MonoBehaviour
 
     public void OnClick()
     {
-        DetailView.text = task.Name;
-        Debug.Log(DetailView.text);
+        DetailView.text = task.Description;
+        //Debug.Log(task.Name);
     }
 
     

@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 5448591337175335372}
   - component: {fileID: 6877887058085160944}
   - component: {fileID: 1699830825829442878}
-  - component: {fileID: 5948723092445586106}
   m_Layer: 5
   m_Name: MIssionBar
   m_TagString: Untagged
@@ -309,7 +308,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5948723092445586106}
+      - m_Target: {fileID: 7700336610006021562}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -322,18 +321,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5948723092445586106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065307516636968860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540f79de3893d99408111c6277ab6621, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7888384726028778812
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +436,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2005554340577626483}
   m_OnClick:
     m_PersistentCalls:
