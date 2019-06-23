@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Data;
 
 /// <summary>
 /// ゲーム起動中常に単一で存在し続けるマネージャー(使い方：Manager.Instance.関数() )
@@ -85,11 +86,13 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
   public GameData gameData = new GameData();       //保存するゲームデータ
 
-  private void Start() {
+  private void Awake() {
     gameData.MyHP = 1;
     gameData.EnemyHP = 1;
     gameData.Attack = 1;
     gameData.Deffence = 1;
+    gameData.isWeaponGetting=new List<bool>();
+
     for(int i = 0; i < 5; i++) {
       bool b=false;
       gameData.isWeaponGetting.Add(b);
