@@ -89,7 +89,7 @@ public class InputController : MonoBehaviour
                                          }
                                          else
                                          {
-                                             if (MaxContinuation.text=="")
+                                             if (MaxContinuation.text!="")
                                              {
                                                  CreateTask();
                                              }

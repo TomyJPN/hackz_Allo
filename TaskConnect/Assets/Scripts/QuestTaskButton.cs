@@ -26,11 +26,12 @@ public class QuestTaskButton : MonoBehaviour {
     task = t;
   }
   public void onDetailView() {
-    descriptionText.text = task.Name + "\n" + task.Description + ", " + task.Deadline.ToShortDateString();
+    descriptionText.text = task.Description + " 締切：" + task.Deadline.ToShortDateString();
+    descriptionText.text +="\n攻撃力："+ (task.Difficulty * 25).ToString();
   }
 
   public void onEndTask() {
-    qm.onPlayCutin(task.Name);
+    qm.onPlayCutin(task.Name, task.Difficulty * 25);
     Manager.Instance.removeTask(task.GUID);
     Destroy(gameObject);
   }

@@ -71,7 +71,7 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     public int Attack { get; set; }
 
     /// <summary>
-    /// 防御力
+    /// 防御力S
     /// </summary>
     public int Deffence { get; set; }
 
@@ -85,15 +85,51 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
   public GameData gameData = new GameData();       //保存するゲームデータ
 
-  private void Start() {
+  void setSampleData() {
+    int type = 1; //quest
+    string name = "課題";
+    string description = "教科書10ページ";
+    int difficully = 3;
+    int maxContinuation = 5;
+    DateTime deadLine = new DateTime(2000, 8, 1);
+    Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation);  //登録
+
+    type = 1; //quest
+    name = "掃除";
+    description = "自分の部屋";
+    difficully = 1;
+    maxContinuation = 6;
+    deadLine = new DateTime(2000, 8, 2);
+    Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
+
+    type = 1; //quest
+    name = "プリントもってくる";
+    description = "学校の";
+    difficully = 2;
+    maxContinuation = 6;
+    deadLine = new DateTime(2000, 8, 2);
+    Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
+  }
+
+  private void Awake() {
+    if (this != Instance) {
+      Destroy(this);
+      return;
+    }
+
+    DontDestroyOnLoad(this.gameObject);
+
     gameData.MyHP = 1;
     gameData.EnemyHP = 1;
     gameData.Attack = 1;
     gameData.Deffence = 1;
+    gameData.isWeaponGetting = new List<bool>();
     for(int i = 0; i < 5; i++) {
       bool b=false;
       gameData.isWeaponGetting.Add(b);
     }
+
+    setSampleData();
   }
 
   /// <summary>

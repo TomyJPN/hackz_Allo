@@ -16,7 +16,6 @@ public class QuestManager : MonoBehaviour {
 
   [SerializeField]
   GameObject Tasks;
-
   [SerializeField]
   GameObject Description;
 
@@ -25,14 +24,27 @@ public class QuestManager : MonoBehaviour {
 
   [SerializeField]
   GameObject attackEffect;
-
   [SerializeField]
   GameObject explosionEffect;
 
   List<Manager.Task> taskList;
 
+  [SerializeField]
+  Image enemyHP;
+  [SerializeField]
+  Image myHP;
+  [SerializeField]
+  GameObject HPView;
+  [SerializeField]
+  Animator enemyAnimator;
+  int attackDamage;
+  [SerializeField]
+  Animator clearAnimator;
+
+  Manager.GameData gameData = new Manager.GameData();
+
   void Start() {
-    setSampleData();
+    //setSampleData();
 
     taskList = new List<Manager.Task>();
     taskList = Manager.Instance.GetTaskListForType(1);
@@ -45,6 +57,11 @@ public class QuestManager : MonoBehaviour {
       qtb.SetTask(taskList[i]);
       obj.transform.Find("Text").GetComponent<Text>().text = taskList[i].Name;
     }
+
+    gameData = Manager.Instance.GetGameDataAll();
+    myHP.fillAmount = gameData.MyHP;
+    Debug.Log("HP:" + gameData.MyHP);
+    enemyHP.fillAmount = gameData.EnemyHP;
   }
 
   void Update() {
@@ -55,7 +72,7 @@ public class QuestManager : MonoBehaviour {
     int type = 1; //quest
     string name = "課題";
     string description = "教科書10ページ";
-    int difficully = 1;
+    int difficully = 3;
     int maxContinuation = 5;
     DateTime deadLine = new DateTime(2000, 8, 1);
     Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation);  //登録
@@ -68,12 +85,21 @@ public class QuestManager : MonoBehaviour {
     deadLine = new DateTime(2000, 8, 2);
     Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
 
+    type = 1; //quest
+    name = "プリントもってくる";
+    description = "学校の";
+    difficully = 2;
+    maxContinuation = 6;
+    deadLine = new DateTime(2000, 8, 2);
+    Manager.Instance.SetTask(type, name, description, difficully, deadLine, maxContinuation); //登録
   }
 
-  public void onPlayCutin(string text) {
+  public void onPlayCutin(string text , int damage) {
+    attackDamage = damage;
     Tasks.SetActive(false);
     Description.SetActive(false);
     cutInView.SetActive(true);
+    HPView.SetActive(false);
     cutinText.text = text;
     Invoke("offCutin", 2.1f);
     Invoke("damage",4.6f);
@@ -82,16 +108,28 @@ public class QuestManager : MonoBehaviour {
 
   void offCutin() {
     cutInView.SetActive(false);
+    HPView.SetActive(true);
     attackEffect.SetActive(true);
   }
 
   void damage() {
     Instantiate(explosionEffect,new Vector3(4.45f,0f,10.43f),Quaternion.identity);
     attackEffect.SetActive(false);
+    gameData.EnemyHP -= attackDamage*0.01f;
+    enemyHP.fillAmount = gameData.EnemyHP;
+    iTween.ShakePosition(Camera.main.gameObject, iTween.Hash("x", 0.3f, "y", 0.3f, "time", 0.5f));
+    if (gameData.EnemyHP <= 0.01) {
+      enemyAnimator.SetTrigger("down");
+      Invoke("clear", 2.3f);
+    }
   }
 
   void ON_UI() {
     Tasks.SetActive(true);
     Description.SetActive(true);
+  }
+
+  void clear() {
+    clearAnimator.SetTrigger("clear");
   }
 }

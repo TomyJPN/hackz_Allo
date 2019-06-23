@@ -35,6 +35,14 @@ public class ManagerUsingSample : MonoBehaviour {
     for(int i = 0; i < list.Count; i++) {
       Debug.Log("タスク[" + i + "] 名前:" + list[i].Name + ", 説明:" + list[i].Description + ", GUID" + list[i].GUID);
     }
+
+    Manager.GameData gameData = Manager.Instance.GetGameDataAll();
+
+    for (int i = 0; i < gameData.isWeaponGetting.Count; i++) {
+      Debug.Log(gameData.isWeaponGetting[i]);
+    }
+
+    Manager.Instance.SetIsWeponListByIndex(1, true);
   }
 
   void Update() {
