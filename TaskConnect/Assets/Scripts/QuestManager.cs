@@ -41,9 +41,14 @@ public class QuestManager : MonoBehaviour {
   [SerializeField]
   Animator clearAnimator;
 
+  GameObject nav;
+
   Manager.GameData gameData = new Manager.GameData();
 
   void Start() {
+    nav = GameObject.Find("CanvasNav").gameObject;
+    nav.SetActive(false);
+
     //setSampleData();
 
     taskList = new List<Manager.Task>();
@@ -131,5 +136,11 @@ public class QuestManager : MonoBehaviour {
 
   void clear() {
     clearAnimator.SetTrigger("clear");
+    Invoke("goTitle", 3f);
+  }
+
+  void goTitle() {
+    nav.SetActive(true);
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Home");
   }
 }

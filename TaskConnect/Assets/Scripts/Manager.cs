@@ -85,7 +85,6 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
   public GameData gameData = new GameData();       //保存するゲームデータ
 
-<<<<<<< HEAD
   void setSampleData() {
     int type = 1; //quest
     string name = "課題";
@@ -120,24 +119,18 @@ public class Manager : SingletonMonoBehaviour<Manager> {
 
     DontDestroyOnLoad(this.gameObject);
 
-=======
-  private void Awake() {
->>>>>>> f7708f59036d2534a85c2be46c79d5ba8e8c9b06
     gameData.MyHP = 1;
     gameData.EnemyHP = 1;
     gameData.Attack = 1;
     gameData.Deffence = 1;
-<<<<<<< HEAD
+    gameData.Coin = 1000;
     gameData.isWeaponGetting = new List<bool>();
-=======
-        gameData.isWeaponGetting = new List<bool>();
->>>>>>> f7708f59036d2534a85c2be46c79d5ba8e8c9b06
     for(int i = 0; i < 5; i++) {
-      bool b=false;
+      bool b=true;
       gameData.isWeaponGetting.Add(b);
     }
 
-    setSampleData();
+   // setSampleData();
   }
 
   /// <summary>
@@ -244,11 +237,11 @@ public class Manager : SingletonMonoBehaviour<Manager> {
   }
 
   /// <summary>
-  /// コインの増減（マイナスだと消費し足りない場合falseを返す）
+  /// コインの増減（消費し足りない場合falseを返す）
   /// </summary>
   /// <param name="n"></param>
   public bool UseCoin(int n) {
-    if (gameData.Coin + n >= 0) {
+    if (gameData.Coin - n >= 0) {
       gameData.Coin += n;
       return true;
     }
