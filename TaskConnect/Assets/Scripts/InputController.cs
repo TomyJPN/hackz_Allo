@@ -22,41 +22,117 @@ public class InputController : MonoBehaviour
     public GameObject QuestUI;
 
     public GameObject MissionUI;
+    public GameObject PopUpUI;
+    public Text PopUptext;
+    private DateTime date;
+    private DataSetDateTime Data;
 
     public void OnClick()
-    {if (HardToggle.isOn||NormalToggle.isOn||EasyToggle.isOn)
-                 {
-                     if (TitleName.text!="")
-                     {
-                         if (Description.text!="")
-                         {
-                             if (QuestToggle.isOn||MissionToggle.isOn)
+    {
+        if (HardToggle.isOn||NormalToggle.isOn||EasyToggle.isOn)
+        {
+                             if (TitleName.text!="")
                              {
-                                 if (QuestToggle.isOn)
+                                 if (Description.text!="")
                                  {
-                                     if (Year.text!="")
+                                     if (QuestToggle.isOn||MissionToggle.isOn)
                                      {
-                                         if (Month.text!="")
+                                         if (QuestToggle.isOn)
                                          {
-                                             if (Day.text!="")
+                                             if (Year.text!="")
+                                             {
+                                                 if (Month.text!="")
+                                                 {
+                                                     if (Day.text!="")
+                                                     {
+
+
+                                                         string strTime = Year.text+"/"+Month.text+"/"+Day.text;
+
+                                                         if (DateTime.TryParse(strTime, out date)&&date>=DateTime.Today)
+                                                         {
+                                                             CreateTask();
+
+                                                         }
+                                                         else
+                                                         {
+                                                             PopUptext.text = "存在しない日付,もしくは過去の日付です    ";
+                                                             PopUpUI.SetActive(true);
+                                                             
+                                                         }
+                                                         
+                                                            
+                                                         
+                                                         
+
+                                                     }
+                                                     else
+                                                     {
+                                                         PopUptext.text = "正確なタスクの締切日を記入して下さい";
+                                                         PopUpUI.SetActive(true);
+
+                                                     }
+                                                 }
+                                                 else
+                                                 {
+                                                     PopUptext.text = "正確なタスクの締切月を記入してください";
+                                                     PopUpUI.SetActive(true);
+
+                                                 }
+                                             }
+                                             else
+                                             {
+                                                 PopUptext.text = "タスクの締切年を記入して下さい";
+                                                 PopUpUI.SetActive(true);
+
+                                             }
+                                         }
+                                         else
+                                         {
+                                             if (MaxContinuation.text=="")
                                              {
                                                  CreateTask();
                                              }
-                                         }
+                                             else
+                                             {
+                                                 PopUptext.text = "習慣づけたと考える日数を記入してください";
+                                                 PopUpUI.SetActive(true);
+
+                                             }
+                                         }        
+                                     }
+                                     else
+                                     {
+                                         PopUptext.text = "習慣、タスクの選択をしてください";
+                                         PopUpUI.SetActive(true);
+
                                      }
                                  }
                                  else
                                  {
-                                     if (MaxContinuation.text=="")
-                                     {
-                                         CreateTask();
-                                     }
-                                 }            
+                                     PopUptext.text = "タスクについての説明を記入してください";
+                                     PopUpUI.SetActive(true);
+
+                                 }
                              }
-                         }
-                     }
-                 }
+                             else
+                             {
+                                 PopUptext.text = "タスクのタイトルを設定してください";
+                                 PopUpUI.SetActive(true);
+
+                             }
+        }
+        else
+        {
+            PopUptext.text = "難易度を設定してください";
+            PopUpUI.SetActive(true);
+        }       
         
+    }
+
+    public void OnClickPopUp()
+    {
+        PopUpUI.SetActive(false);
     }
 
     public void ToggleChange()
@@ -84,7 +160,6 @@ public class InputController : MonoBehaviour
     {
         int type = 0, Difficulty = 0;
         Manager.Task myTask1 = new Manager.Task();
-        DateTime data;
 
         if (HardToggle.isOn)
         {
@@ -100,8 +175,7 @@ public class InputController : MonoBehaviour
         if (QuestToggle.isOn)
         {
             type = 1;
-            data = new DateTime(int.Parse(Year.text),int.Parse(Month.text),int.Parse(Day.text));
-            Manager.Instance.SetQuestTask(TitleName.text,Description.text,Difficulty,data);  //登録
+            Manager.Instance.SetQuestTask(TitleName.text,Description.text,Difficulty,date);  //登録
 
         }
         else
