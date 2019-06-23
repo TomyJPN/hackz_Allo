@@ -67,7 +67,7 @@ public class MissionButton : MonoBehaviour
         }
     }
 
-    public void OnClick(int no)
+    public void Click(int no)
     {
         Debug.Log(no);
     }

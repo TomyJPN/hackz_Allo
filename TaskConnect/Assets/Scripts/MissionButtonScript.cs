@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MissionButtonScript : MonoBehaviour
 {
     Text DetailView;
-
     GameObject MissionButtonBar;
 
     Manager.Task task = new Manager.Task();
@@ -31,8 +30,7 @@ public class MissionButtonScript : MonoBehaviour
 
     public void OnClick()
     {
-        DetailView.text = task.Name;
-        Debug.Log(DetailView.text);
+        DetailView.text = task.Description;
     }
 
     
