@@ -70,7 +70,7 @@ public class MissionButton : MonoBehaviour
             //btn.transform.GetComponent<Button>().onClick.AddListener(() => OnClick(no));
 
             MissionButtonScript mbs = btn.GetComponent<MissionButtonScript>();
-            mbs.SetMissionTask(list[i]);
+            mbs.SetTask(list[i]);
 
         }
     }
