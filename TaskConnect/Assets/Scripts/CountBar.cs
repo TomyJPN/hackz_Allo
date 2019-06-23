@@ -15,17 +15,16 @@ public class CountBar : MonoBehaviour
         CountSlider = GetComponent<Slider>();
 
         float maxCount = 100f;
-        float nowConut = 0f;
+        //float nowConut = 0;
 
         CountSlider.maxValue = maxCount;
-        CountSlider.value = nowConut;
+        //CountSlider.value = nowConut;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        btn.GetComponent<CompleteBottun>().Click();
-        
+                
     }
 }

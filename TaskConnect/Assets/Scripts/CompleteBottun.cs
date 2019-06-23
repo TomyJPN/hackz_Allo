@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class CompleteBottun : MonoBehaviour
 {
-    Text Continuation;
-    //Button cpl;
+    Slider Continuation;
+    //Text DetailView;
+
     Manager.Task task = new Manager.Task();
 
     void Start()
     {
-        //cpl = GetComponent<Button>();
-        Continuation = GameObject.Find("Canvas/Slider").GetComponent<Text>();
+        Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
+        //DetailView = GameObject.Find("Canvas/Details/Information/Text").GetComponent<Text>();
 
+        float maxCont = 100f;
+        
+
+        Continuation.maxValue = maxCont;
     }
 
     // Update is called once per frame
@@ -29,8 +34,8 @@ public class CompleteBottun : MonoBehaviour
 
     public void Click()
     {
-        //cpl.interactable = false;
-        //Continuation.text = (task.NowContinuation).ToString();
+        //DetailView.text = task.Description;
+        Continuation.value = task.NowContinuation + 10;
         Debug.Log("ボタンが押された");
     }
 }
