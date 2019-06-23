@@ -49,7 +49,52 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     public int MaxContinuation { get; set; }
   }
 
+  public class GameData {
+    /// <summary>
+    /// 所持コイン数
+    /// </summary>
+    public int Coin { get; set; }
+
+    /// <summary>
+    /// UnityちゃんのHP(割合)
+    /// </summary>
+    public float MyHP { get; set; }
+
+    /// <summary>
+    /// 敵のHP（割合）
+    /// </summary>
+    public float EnemyHP { get; set; }
+
+    /// <summary>
+    /// 攻撃力
+    /// </summary>
+    public int Attack { get; set; }
+
+    /// <summary>
+    /// 防御力
+    /// </summary>
+    public int Deffence { get; set; }
+
+    /// <summary>
+    /// 武器を所持しているかのリスト
+    /// </summary>
+    public List<bool> isWeaponGetting { get; set; }
+  }
+
   private List<Task> taskList = new List<Task>();  //総合的に入れるリスト
+
+  public GameData gameData = new GameData();       //保存するゲームデータ
+
+  private void Start() {
+    gameData.MyHP = 1;
+    gameData.EnemyHP = 1;
+    gameData.Attack = 1;
+    gameData.Deffence = 1;
+    for(int i = 0; i < 5; i++) {
+      bool b=false;
+      gameData.isWeaponGetting.Add(b);
+    }
+  }
 
   /// <summary>
   /// 廃止
@@ -131,7 +176,7 @@ public class Manager : SingletonMonoBehaviour<Manager> {
   }
 
   /// <summary>
-  /// タスクを指定GUIDから削除します
+  /// タスクを指定GUIDを使って削除します
   /// </summary>
   public void removeTask(string GUID) {
     for (int i = 0; i < taskList.Count; i++) {
@@ -141,4 +186,42 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     }
   }
 
+  /// <summary>
+  /// コインの増減（マイナスだと消費し足りない場合falseを返す）
+  /// </summary>
+  /// <param name="n"></param>
+  public bool UseCoin(int n) {
+    if (gameData.Coin + n >= 0) {
+      gameData.Coin += n;
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  /// <summary>
+  /// 装備を持っているかのリストを取得します
+  /// </summary>
+  /// <returns></returns>
+  public List<bool> GetIsWeaponList() {
+    return gameData.isWeaponGetting;
+  }
+
+  /// <summary>
+  /// 指定インデックス番号の武器の所持非所持を設定
+  /// </summary>
+  /// <param name="index">リストの要素番号</param>
+  /// <param name="boolean">持ってるか持ってないか</param>
+  public void SetIsWeponListByIndex(int index , bool boolean) {
+    gameData.isWeaponGetting[index] = boolean;
+  }
+
+  /// <summary>
+  /// ゲームデータを丸ごと取得
+  /// </summary>
+  /// <returns></returns>
+  public GameData GetGameDataAll() {
+    return gameData;
+  }
 }
