@@ -10,11 +10,19 @@
         <e p="Scripts" t="Include">
           <e p="Button.cs" t="Include" />
           <e p="ButtonController.cs" t="Include" />
+          <e p="CharacterSettingController.cs" t="Include" />
+          <e p="CompleteBottun.cs" t="Include" />
+          <e p="CountBar.cs" t="Include" />
           <e p="InputController.cs" t="Include" />
           <e p="MainButtonController.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
           <e p="MissionButton.cs" t="Include" />
+          <e p="MissionButtonScript.cs" t="Include" />
+          <e p="QuestManager.cs" t="Include" />
+          <e p="QuestTaskButton.cs" t="Include" />
+          <e p="ShopController.cs" t="Include" />
           <e p="SingletonMonoBehaviour.cs" t="Include" />
+          <e p="VideoPlayerOnUGUI.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

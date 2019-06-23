@@ -60,10 +60,14 @@ public class MissionButton : MonoBehaviour
             btn.transform.GetComponentInChildren<Text>().text = list[i].Name;
             //ボタンのクリックイベント登録
             //btn.transform.GetComponent<Button>().onClick.AddListener(() => OnClick(no));
+
+            MissionButtonScript mbs = btn.GetComponent<MissionButtonScript>();
+            mbs.SetTask(list[i]);
+
         }
     }
 
-    public void OnClick(int no)
+    public void Click(int no)
     {
         Debug.Log(no);
     }

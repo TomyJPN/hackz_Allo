@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 6350960087355947382}
   - component: {fileID: 3526897402903291475}
   - component: {fileID: 832593957374270971}
+  - component: {fileID: 7700336610006021562}
   m_Layer: 5
   m_Name: MissionBarButton
   m_TagString: Untagged
@@ -175,6 +176,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7700336610006021562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839977545328734398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540f79de3893d99408111c6277ab6621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3065307516636968860
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +307,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6877887058085160944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7700336610006021562}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &7888384726028778812
@@ -309,6 +333,7 @@ GameObject:
   - component: {fileID: 6340846440524302304}
   - component: {fileID: 2005554340577626483}
   - component: {fileID: 5854642614796315888}
+  - component: {fileID: 1941133415676572729}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -415,9 +440,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2005554340577626483}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1941133415676572729}
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7700336610006021562}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1941133415676572729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888384726028778812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0634bfd7f378a314cb352eb28872fe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8062440813016306541
 GameObject:
   m_ObjectHideFlags: 0
