@@ -12,7 +12,9 @@
           <e p="ButtonController.cs" t="Include" />
           <e p="CharacterSettingController.cs" t="Include" />
           <e p="CompleteBottun.cs" t="Include" />
+          <e p="ContinuationInfo.cs" t="Include" />
           <e p="CountBar.cs" t="Include" />
+          <e p="HPController.cs" t="Include" />
           <e p="InputController.cs" t="Include" />
           <e p="MainButtonController.cs" t="Include" />
           <e p="Manager.cs" t="Include" />
