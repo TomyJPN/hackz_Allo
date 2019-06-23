@@ -8,11 +8,11 @@ public class CompleteBottun : MonoBehaviour
     Slider Continuation;
     Text ContinuationInfo;
     MissionButtonScript mbs;
-
+    //public Button btn;
     void Start()
     {
         Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
-        ContinuationInfo = GameObject.Find("Canvas/ContinuationInfo/Text").GetComponent<Text>();
+        ContinuationInfo = GameObject.Find("Canvas/Details/ContinuationInfo/Text").GetComponent<Text>();
         mbs = transform.parent.parent.GetComponent<MissionButtonScript>();
         Debug.Log("取得確認："+transform.parent.parent.name);
         //float maxCont = Continuation.maxValue;        
@@ -28,6 +28,5 @@ public class CompleteBottun : MonoBehaviour
     public void Click()
     {
         mbs.UpdateContinuation();
-       
     }
 }

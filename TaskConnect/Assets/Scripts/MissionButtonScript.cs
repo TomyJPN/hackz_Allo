@@ -9,6 +9,7 @@ public class MissionButtonScript : MonoBehaviour
     Text ContinuationInfo;
     Slider Continuation;
     GameObject MissionButtonBar;
+    public GameObject btn;
 
     Manager.Task task = new Manager.Task();
 
@@ -17,7 +18,7 @@ public class MissionButtonScript : MonoBehaviour
     {
         DetailView = GameObject.Find("Canvas/Details/Information/Text").GetComponent<Text>();
         Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
-        ContinuationInfo = GameObject.Find("Canvas/ContinuationInfo/Text").GetComponent<Text>();
+        ContinuationInfo = GameObject.Find("Canvas/Details/ContinuationInfo/Text").GetComponent<Text>();
 
         //float maxCont = 100f;
         //Continuation.maxValue = maxCont;
@@ -39,7 +40,11 @@ public class MissionButtonScript : MonoBehaviour
         Continuation.maxValue = task.MaxContinuation;
         Continuation.value = task.NowContinuation;
         ContinuationInfo.text = Continuation.value.ToString() + "/" + Continuation.maxValue.ToString();
-
+        btn.SetActive(false);
+        //GameObject.Find("Canvas/Scroll View/Viewport/Content/MissionBarButton/MissionBar").GetComponent<Button>().interactable = false;
+        //GameObject btn = GameObject.Find("Button");
+        //Debug.Log(btn);
+        //btn.GetComponent<Button>().interactable = false;
     }
 
     public void UpdateContinuation()
