@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CompleteBottun : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-    Slider Continuation;
     Text ContinuationInfo;
+    Slider Continuation;
 
     Manager.Task task = new Manager.Task();
 
     void Start()
     {
-        Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
         ContinuationInfo = GameObject.Find("Canvas/ContinuationInfo/Text").GetComponent<Text>();
+        Continuation = GameObject.Find("Canvas/Slider").GetComponent<Slider>();
 
-        //float maxCont = Continuation.maxValue;        
+        float maxCont = 100f;
+        Continuation.maxValue = maxCont;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void SetMissionTask(Manager.Task t)
+    public void Settask(Manager.Task t)
     {
         task = t;
     }
 
-    public void Click()
+    public void OnClick()
     {
-        //DetailView.text = task.Description;
-        Continuation.value = task.NowContinuation + 1;  //1は仮入れ
-        Continuation.maxValue = task.MaxContinuation + 7;//7は仮入れ
+        Continuation.value = task.NowContinuation + 10;
         ContinuationInfo.text = Continuation.value.ToString() + "/" + Continuation.maxValue.ToString();
     }
 }

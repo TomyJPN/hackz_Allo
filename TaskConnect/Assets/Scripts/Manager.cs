@@ -190,6 +190,19 @@ public class Manager : SingletonMonoBehaviour<Manager> {
   }
 
   /// <summary>
+  /// タスクの継続日数をGUIDで更新します
+  /// </summary>
+  /// <param name="nowContinuation"></param>
+  /// <param name="GUID"></param>
+  public void setNowContinuationByGUID(int nowContinuation , string GUID) {
+    for (int i = 0; i < taskList.Count; i++) {
+      if (GUID == taskList[i].GUID) {
+        taskList[i].NowContinuation = nowContinuation;
+      }
+    }
+  }
+
+  /// <summary>
   /// コインの増減（マイナスだと消費し足りない場合falseを返す）
   /// </summary>
   /// <param name="n"></param>
