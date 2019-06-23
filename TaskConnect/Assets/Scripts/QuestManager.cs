@@ -23,6 +23,12 @@ public class QuestManager : MonoBehaviour {
   [SerializeField]
   Text cutinText;
 
+  [SerializeField]
+  GameObject attackEffect;
+
+  [SerializeField]
+  GameObject explosionEffect;
+
   List<Manager.Task> taskList;
 
   void Start() {
@@ -70,11 +76,22 @@ public class QuestManager : MonoBehaviour {
     cutInView.SetActive(true);
     cutinText.text = text;
     Invoke("offCutin", 2.1f);
+    Invoke("damage",4.6f);
+    Invoke("ON_UI", 5.5f);
   }
 
   void offCutin() {
+    cutInView.SetActive(false);
+    attackEffect.SetActive(true);
+  }
+
+  void damage() {
+    Instantiate(explosionEffect,new Vector3(4.45f,0f,10.43f),Quaternion.identity);
+    attackEffect.SetActive(false);
+  }
+
+  void ON_UI() {
     Tasks.SetActive(true);
     Description.SetActive(true);
-    cutInView.SetActive(false);
   }
 }
