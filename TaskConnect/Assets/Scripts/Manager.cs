@@ -123,13 +123,14 @@ public class Manager : SingletonMonoBehaviour<Manager> {
     gameData.EnemyHP = 1;
     gameData.Attack = 1;
     gameData.Deffence = 1;
+    gameData.Coin = 1000;
     gameData.isWeaponGetting = new List<bool>();
     for(int i = 0; i < 5; i++) {
-      bool b=false;
+      bool b=true;
       gameData.isWeaponGetting.Add(b);
     }
 
-    setSampleData();
+   // setSampleData();
   }
 
   /// <summary>
@@ -236,11 +237,11 @@ public class Manager : SingletonMonoBehaviour<Manager> {
   }
 
   /// <summary>
-  /// コインの増減（マイナスだと消費し足りない場合falseを返す）
+  /// コインの増減（消費し足りない場合falseを返す）
   /// </summary>
   /// <param name="n"></param>
   public bool UseCoin(int n) {
-    if (gameData.Coin + n >= 0) {
+    if (gameData.Coin - n >= 0) {
       gameData.Coin += n;
       return true;
     }

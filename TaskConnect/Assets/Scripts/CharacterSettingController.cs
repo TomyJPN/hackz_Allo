@@ -13,6 +13,14 @@ public class CharacterSettingController : MonoBehaviour
     public bool[] enabled = new bool[5]{true,true,true,true,true};
     public bool[] clicked=new bool[5]{false,false,false,false,false};
     private int[] wait = new int[5]{0,0,0,0,0};
+private         List <bool> ok = new List<bool>();
+
+    private void Start()
+    {
+        Manager.Task myTask1 = new Manager.Task();
+        ok = Manager.Instance.GetIsWeaponList();
+    }
+
     public void RobeOnClick()
     {
         SpriteChange(0);
@@ -55,6 +63,7 @@ public class CharacterSettingController : MonoBehaviour
 
     private void SpriteChange(int i)
     {
+
         if (clicked[i])
         {
             if (wait[i]==1)
@@ -95,10 +104,14 @@ public class CharacterSettingController : MonoBehaviour
             }
             
         }
-        else if (enabled[i])
+        else if (ok[i])
         {
             image[i].sprite = sprite[i];
             clicked[i] = true;
+        }
+        else
+        {
+            Debug.Log("OOOOOO");
         }
     }
 }

@@ -184,7 +184,7 @@ public class InputController : MonoBehaviour
             Manager.Instance.SetMissionTask(TitleName.text,Description.text,Difficulty,int.Parse(MaxContinuation.text));
         }
 
-    }
+    }//a
     
 }
 
